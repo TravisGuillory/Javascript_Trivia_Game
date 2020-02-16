@@ -1,2 +1,2 @@
-# Javascript_Trivia_Game
-Test Your JavaScript Knowledge
+# Javascript_Trivia
+Trivia Game to test JavaScript Knowledge
