@@ -1,119 +1,70 @@
 /* Global Variables */
 
-// create questions here
-const questions = [
-    
-    {
-        question: "What is 1+1?", 
-        options: {
-            a: "1",
-            b: "2",
-            c: "3"
-        },
-        answer: "2"
-    },
-    {
-        question: "What is 2 + 2",
-        options: {
-            a: "2",
-            b: "3",
-            c: "4"
-        },
-        answer: "4"
-    },
-    {
-        question: "what is 3 + 3?",
-        options: {
-            a: "6",
-            b: "5",
-            c: "7"
-        },
-        answer: "6"
-        
-    }
-];
+
+// set up infor for each round. Question +  Options + Correct Answer
+var rounds = [
+    new Round("Wiat is 1+1?", ["1", "2", "3"], "2"),
+    new Round("What is 2+2?", ["2", "3", "4"], "4"),
+    new Round("What is 3+3?", ["6", "7", "8"], "6")
+]
 // this class is used to build the game  
-class Game{
-    constructor(questions){
+function Game(rounds){
         this.score = 0
         this.roundNumber = 0;
-        this.questions = questions;
-        this.totalRounds = questions.length;
+        this.rounds = rounds;
+        this.time = 30;
 
     }
 
+    Game.prototype.getCurrentRound = function() {
+        return this.roundNumber;
+    }
     
+    Game.prototype.isGameOver = function(){
+        return(this.roundnumber === this.rounds.length);
+    }
     
-    // Method to determine the current round
-        /* get currentRound(){
-            return this.calcCurrentRound();
+    Game.prototype.playRound = function(selection) {
+        if (questions[roundNumber].answer === selection){
+            this.score++;
         }
+        this.currentRound++
 
-            calcCurrentRound(){
-            return this.roundNumber;
-        }
- */
+    }
+    
 
-        static curentRound(){
-            return this.roundNumber;
-        }
-    // method to load the current question into the game play HTML
-        setRound(){
-            var round = new Round(questions[this.roundNumber], this.options, this.answer );
+    function Round(question, options, answer) {
+        this.question = question;
+        this.options= options;
+        this.answer = answer
+    }
 
-        }
+    Round.prototype.isCorrect = function(selection){
+        return this.answer === selection;
+    }
 
-    //method to determine if game is over
-        
-        // getter
-        get isGameOver(){
-            return this.calcIsGameOver();
-        }
 
-        //setter
-        calcIsGameOver(){
-            return this.roundNumber === this.totalRounds;
-        }
-        
-        //method to determine if user selection is correct for the reound
 
-        get isSelectionCorrect(){
-            return this.calcSelectionCorrect();
-        }
+
+
+
+    
 
         
        
     
     
-    //Method to determine if player choice is correct
-        isChoiceCorrect(choice){
-            if(this.questions[currentRound].answer === choice){
-                this.score++;
-            }
-            this.currentRound++;
-    }
+    
 
 
 
 
-}
 
 
 
 
-// this class loads a new question options and answer to be placed onto the game card
-class Round {
-    constructor(question, options, answer) {
-        this.question = question;
-        this.options = options;
-        this.answer = answer;
-        
-    }
-
-        
 
 
-}
 
 
 
@@ -127,7 +78,8 @@ $("#startButton").click(() => {
     
     alert("Game was created. Number of rounds to play = " + game.totalRounds);
     alert(game.currentRound);
-    alert(game.isGameOver);
+    game.playRound;
+
     
     
 
@@ -135,9 +87,7 @@ $("#startButton").click(() => {
 
 }); 
 
-function loadQuestion(){
 
-}
 
 
 function showCurrentScore(){
@@ -145,7 +95,7 @@ function showCurrentScore(){
 }
 
 
-function showFinalScore(){
+function gameOver(score, totalQuestions, time){
     //do some work
 
 }
