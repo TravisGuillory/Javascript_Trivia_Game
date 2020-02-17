@@ -34,11 +34,68 @@ const questions = [
 ];
 // this class is used to build the game  
 class Game{
-    constructor(questions, numRounds){
+    constructor(questions){
         this.score = 0
+        this.roundNumber = 0;
         this.questions = questions;
-        this.numRounds = numRounds;
+        this.totalRounds = questions.length;
+
     }
+
+    
+    
+    // Method to determine the current round
+        /* get currentRound(){
+            return this.calcCurrentRound();
+        }
+
+            calcCurrentRound(){
+            return this.roundNumber;
+        }
+ */
+
+        static curentRound(){
+            return this.roundNumber;
+        }
+    // method to load the current question into the game play HTML
+        setRound(){
+            var round = new Round(questions[this.roundNumber], this.options, this.answer );
+
+        }
+
+    //method to determine if game is over
+        
+        // getter
+        get isGameOver(){
+            return this.calcIsGameOver();
+        }
+
+        //setter
+        calcIsGameOver(){
+            return this.roundNumber === this.totalRounds;
+        }
+        
+        //method to determine if user selection is correct for the reound
+
+        get isSelectionCorrect(){
+            return this.calcSelectionCorrect();
+        }
+
+        
+       
+    
+    
+    //Method to determine if player choice is correct
+        isChoiceCorrect(choice){
+            if(this.questions[currentRound].answer === choice){
+                this.score++;
+            }
+            this.currentRound++;
+    }
+
+
+
+
 }
 
 
@@ -46,12 +103,16 @@ class Game{
 
 // this class loads a new question options and answer to be placed onto the game card
 class Round {
-    constructor(question, options, answer, currentRound) {
+    constructor(question, options, answer) {
         this.question = question;
         this.options = options;
         this.answer = answer;
-        this.currentRound = currentRound;
+        
     }
+
+        
+
+
 }
 
 
@@ -62,22 +123,29 @@ document.addEventListener("DOMContentLoaded", function(event){
 $("#startButton").click(() => {
     alert("Start Button was clicked");
     
-    var game = new Game(questions, questions.length);
+    var game = new Game(questions);
     
-    alert("Game was created. Number of rounds to play = " + game.numRounds);
+    alert("Game was created. Number of rounds to play = " + game.totalRounds);
+    alert(game.currentRound);
+    alert(game.isGameOver);
+    
+    
 
-    var currentRound = new Round()
+    
 
 }); 
 
+function loadQuestion(){
+
+}
 
 
-function isOver(){
+function showCurrentScore(){
     // do work 
 }
 
 
-function showScores(){
+function showFinalScore(){
     //do some work
 
 }
