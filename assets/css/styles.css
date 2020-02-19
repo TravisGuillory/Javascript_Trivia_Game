@@ -1,2 +1,7 @@
-body{
+.game-time{
+    display: none;
+}
+
+.post-game{
+    display:none
 }
