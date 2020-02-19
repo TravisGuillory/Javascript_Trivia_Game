@@ -50,10 +50,15 @@ var questions =[
 
 document.addEventListener("DOMContentLoaded", function(event){
 
-$("#startButton").click(() =>{
+    $("#startButton").click(() =>{
         var game = new Game(questions);
+        
+    
+     //start the game
+    
 
-        //start a round
+        $(".game-time").css("display", "flex");
+        $(".pre-game").css("display", "none");
         playRound();
 
 
@@ -98,10 +103,24 @@ $("#startButton").click(() =>{
     
     //function to display final scores
     function finalScore(){
+        $(".game-time").css("display", "none");
+        $(".post-game").css("display", "flex");
+        
         var score = (game.score/questions.length) *100
         $("#playerScore").text("You answered "+game.score + " of " + questions.length + " questions correct." )
         $("#scoreInfo").text("Your JavaScript score is " + score + "%");
+
+        
+    
     }
+
+
+    // function to restart game.
+
+    $("#replayButton").click(() => {
+        location.reload();
+    });
+
 
 });
 
