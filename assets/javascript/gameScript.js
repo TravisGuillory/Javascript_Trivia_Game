@@ -1,4 +1,6 @@
 
+/* Building the game using object oriented classes. 1 Game class as a framework for the game. Questions class is used to load guestions into the game object. 
+Originally tried using standard arrays for the questions but was inconvenient for iterating through the multiple choice array of options */
 class Game {
     constructor(questions) {
         this.score = 0;
@@ -6,11 +8,12 @@ class Game {
         this.index = 0;
     }
 
-    
+    // method to determine the round number
     getIndex = (() =>{
         return this.question[this.index];
     });
     
+    //method to determine if the user selection is correct.
     gradeSelection = ((selection) => {
         
         if(this.questions[this.index].answer === selection){
@@ -21,6 +24,7 @@ class Game {
         
     }); 
 
+// method to determine if the last round is reached and the gema is over. 
     isGameOver = (() => {
         
         return this.index === this.questions.length;
@@ -28,7 +32,7 @@ class Game {
     }); 
 }
 
-// need to  send questions as an object. This allows referencing the question parts by name.
+// Questions class used to strucure question object with a string question sentence, array of options, string answer.
 class Question {
     constructor(sentence, options, answer) {
         this.sentence = sentence;
@@ -47,18 +51,15 @@ var questions =[
 ];
 
 
-
+//listener to make sure dom is loaded prior to firing the game code. 
 document.addEventListener("DOMContentLoaded", function(event){
 
     $("#startButton").click(() =>{
+        // initiate an instance of the game object. (Game is the blue print and game is the house)
         var game = new Game(questions);
-        
-    
-     //start the game
-    
 
-        $(".game-time").css("display", "flex");
-        $(".pre-game").css("display", "none");
+        $(".game-time").css("display", "flex"); // unhide the card containing the game html
+        $(".pre-game").css("display", "none"); // hide the pre-game info. 
         playRound();
 
 
