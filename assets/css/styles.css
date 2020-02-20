@@ -1,5 +1,5 @@
 body{
-    background-color: aqua;
+    background-color: rgb(86, 82, 139);
 }
 
 .game-time{
@@ -8,4 +8,8 @@ body{
 
 .post-game{
     display:none
+}
+
+#inputContainer{
+    text-align: center;
 }
