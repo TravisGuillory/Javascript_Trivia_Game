@@ -12,26 +12,24 @@
 </head>
 
 <body>
-    <div class="container">
-	  <div class="jumbotron text-center p-2 mt-3">
-		  <h1 class="display-4 "><strong>Javascript Trivia</strong></h1>
+    <div class="container ">
+	  <div class="jumbotron text-center p-2 mt-3 ">
+		  <h1 class="display-4 pre-game"><strong>Javascript Trivia</strong></h1>
 
 		  <p class="lead pre-game">Welcome to Javascript Trivia. Click the Start Button to begin</p>
 		  <p>Select all of the correct answers before the clock runs out.</p>
-		  <hr class="my-4">
-		  <div class="input-group mb-3">
-			<input type="text" class="form-control" size="25" width="25px" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-			<div class="input-group-append">
-				<p class="lead pre-game"> <a class="btn btn-primary btn-lg" id="startButton" href="#" role="button">Start</a> </p>
-			</div>
-		  <div class="timerContainer text-center game-time" id="timer">
-				<span class="text-center">Timer Area</span>
+		  
+		  
+				<p class="lead pre-game"> <a class="btn btn-success btn-lg " id="startButton" href="#" role="button">Start</a> </p>
+			
+		  <div class="timerContainer text-center game-time " >
+			<h5 id="timeText">Time Remaining: &nbsp </h5><h5 class="text-center" id="seconds" >s</h5>
 		  </div>
-	  </div>
+	  
     </div>
 	
 	<!-- Game play area -->
-<div class="container col-lg-6 card game-time" id="gameArena">
+<div class="container col-lg-8 card game-time" id="gameArena">
 		<div class="text-center " id="currentQuestionContainer">
 		  <h4 class="card-header border mt-2">Select The Correct Answer</h4>
 
@@ -62,19 +60,24 @@
 
 <!--post game scoreboard-->
 <div class="container col-lg-6 post-game" id= "resultsContainer">
-  <div class="card col-6 text-center  offset-xl-3"> 
-	  <img class="card-img-top" src="assets/img/card-img.png" alt="Card image cap">
+  <div class="card col-6 text-center mt-2 offset-xl-3"> 
+	  <img class="card-img-top t-2" src="assets/img/card-img.png" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title" id="playerScore">Player Score</h5>
-      <p class="card-text" id="scoreInfo" >Some text.</p>
-      <a  class="btn btn-primary" id="replayButton">Play Again</a> </div>
+	  <p class="card-text" id="scoreInfo" >Some text.</p>
+	  
+		<input type="text" id="userNameBox" class="form-control mb-2" placeholder="Enter Name" aria-label=" username" aria-describedby="basic-addon2">
+	
+      <a  class="btn btn-primary" id="submitScoreButton">Submit Score</a> </div>
   </div>
+</div>
+<div class="container high-score">
+
 </div>
 
 
-
 <script src="assets/javascript/gameScript.js"></script>
-<!-- <script src="assets/javascript/gameScript.js"></script> -->
+<script src="assets/javascript/scoreTrack.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </body>
 
