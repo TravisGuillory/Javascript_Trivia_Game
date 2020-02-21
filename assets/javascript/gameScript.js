@@ -30,11 +30,9 @@ class Game {
 
     if (this.questions[this.index].answer === selection) {
       this.score++;
-      
-      
-    }
+     }
     this.index++;
-    return this.questions[this.index].answer === selection;
+    
   };
 
   // method to determine if the last round is reached and the gema is over.
@@ -71,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     $(".game-time").css("display", "flex"); // unhide the card containing the game html
     $(".pre-game").css("display", "none"); // hide the pre-game info.
-    timer(20);
+   
     playRound();
 
     function playRound() {
@@ -104,22 +102,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // determine if the user selection is correct and adjust time remaining if incorrect
     function gradeSelection(event) {
       game.gradeSelection(event.target.innerText);
-      var isCorrect = game.gradeSelection(event.target.innerText);
-      if(isCorrect){
-        var currentSeconds = $("#seconds").text;
-        timer(currentSecons);
-        playRound();
-      }else{
-        //adjust time and then playround;
-        var penaltySeconds = $("#seconds").text - 3;
-        timer(penaltySeconds)
-      }
+      playRound()
+      
       
     }
     
-    function timer(seconds){
+    /* function timer(seconds){
       $("#seconds").text(seconds);
-    }
+    } */
     
 
 
@@ -149,7 +139,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     // function to restart game.
 
-    $("#replayButton").click(() => {
+    $("#submitScoreButton").click(() => {
+      
+      console.log({"name": $("#userNameBox").text, "score": $("#playerScore").text});
+      // window.localStorage.setItem({"name": $("#userNameBox").text, "score": $("#playerScore").text});
       location.reload();
     });
   
