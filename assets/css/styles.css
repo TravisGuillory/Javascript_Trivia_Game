@@ -13,3 +13,7 @@ body{
 #inputContainer{
     text-align: center;
 }
+
+.high-score{
+    display: none;
+}
